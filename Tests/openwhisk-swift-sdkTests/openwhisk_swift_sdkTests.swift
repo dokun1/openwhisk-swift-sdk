@@ -10,11 +10,11 @@ final class openwhisk_swift_sdkTests: XCTestCase {
     
     override func setUp() {
         let newAgent = Agent()
-        newAgent.apiKey = "2fead91c-2ca8-481f-bd3e-4468821b4d5f"
-        newAgent.secret = "YgP0ywUcAlhpJKD4UA9Uw1NPSmMPZZNPmtHz6U75yiSzS94MBnOLkJeYUUF8OmfO"
-        newAgent.organization = "david.okun"
-        newAgent.space = "dev"
-        newAgent.host = "https://openwhisk.ng.bluemix.net"
+        newAgent.apiKey = "enter api key here"
+        newAgent.secret = "enter secret here"
+        newAgent.organization = "enter organization here"
+        newAgent.space = "enter space here"
+        newAgent.host = "enter host here"
         agent = newAgent
     }
     

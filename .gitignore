@@ -1,7 +1,7 @@
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
-
+**/.DS_Store
 ## Build generated
 build/
 DerivedData/
@@ -16,7 +16,7 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
-
+openwhisk-swift-sdk.xcodeproj
 ## Other
 *.moved-aside
 *.xccheckout

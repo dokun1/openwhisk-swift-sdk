@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyRequest
 
 public enum AgentError: Swift.Error {
     case noApiKey

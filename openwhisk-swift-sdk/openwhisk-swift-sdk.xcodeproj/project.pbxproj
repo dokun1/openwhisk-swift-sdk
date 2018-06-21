@@ -12,28 +12,9 @@
 		5379E91E20DAF5EE00D2BDA2 /* openwhisk_swift_sdk.h in Headers */ = {isa = PBXBuildFile; fileRef = 5379E91020DAF5EE00D2BDA2 /* openwhisk_swift_sdk.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5379E92820DAF62200D2BDA2 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5379E92720DAF62200D2BDA2 /* Agent.swift */; };
 		53FC334420DB033F0000E7D6 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC334320DB033F0000E7D6 /* Action.swift */; };
-		53FC334F20DB061A0000E7D6 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC334620DB061A0000E7D6 /* HTTPMethod.swift */; };
-		53FC335020DB061A0000E7D6 /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC334720DB061A0000E7D6 /* CodableExtensions.swift */; };
-		53FC335120DB061A0000E7D6 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC334820DB061A0000E7D6 /* JSON.swift */; };
-		53FC335220DB061A0000E7D6 /* RestToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC334920DB061A0000E7D6 /* RestToken.swift */; };
-		53FC335320DB061A0000E7D6 /* RestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC334A20DB061A0000E7D6 /* RestUtilities.swift */; };
-		53FC335420DB061A0000E7D6 /* RestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC334B20DB061A0000E7D6 /* RestRequest.swift */; };
-		53FC335520DB061A0000E7D6 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC334C20DB061A0000E7D6 /* MultipartFormData.swift */; };
-		53FC335620DB061A0000E7D6 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC334D20DB061A0000E7D6 /* StringExtensions.swift */; };
-		53FC335720DB061A0000E7D6 /* JSONWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC334E20DB061A0000E7D6 /* JSONWrapper.swift */; };
-		53FC335B20DB08A20000E7D6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC335A20DB08A20000E7D6 /* Logger.swift */; };
-		53FC336620DB08B60000E7D6 /* BreakerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC335C20DB08B60000E7D6 /* BreakerError.swift */; };
-		53FC336720DB08B60000E7D6 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC335D20DB08B60000E7D6 /* Snapshot.swift */; };
-		53FC336820DB08B60000E7D6 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC335E20DB08B60000E7D6 /* Utils.swift */; };
-		53FC336920DB08B60000E7D6 /* CircuitBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC335F20DB08B60000E7D6 /* CircuitBreaker.swift */; };
-		53FC336A20DB08B60000E7D6 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC336020DB08B60000E7D6 /* Stats.swift */; };
-		53FC336B20DB08B60000E7D6 /* Bulkhead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC336120DB08B60000E7D6 /* Bulkhead.swift */; };
-		53FC336C20DB08B60000E7D6 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC336220DB08B60000E7D6 /* Collection.swift */; };
-		53FC336D20DB08B60000E7D6 /* Invocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC336320DB08B60000E7D6 /* Invocation.swift */; };
-		53FC336E20DB08B60000E7D6 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC336420DB08B60000E7D6 /* Monitor.swift */; };
-		53FC336F20DB08B60000E7D6 /* MonitorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC336520DB08B60000E7D6 /* MonitorCollection.swift */; };
 		53FC337420DB0D7D0000E7D6 /* MultiDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC337320DB0D7D0000E7D6 /* MultiDecodable.swift */; };
 		53FC337620DB11470000E7D6 /* InvocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC337520DB11470000E7D6 /* InvocationResponse.swift */; };
+		53FC337920DB5AD00000E7D6 /* Decoders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC337820DB5AD00000E7D6 /* Decoders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,28 +36,9 @@
 		5379E91D20DAF5EE00D2BDA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5379E92720DAF62200D2BDA2 /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		53FC334320DB033F0000E7D6 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		53FC334620DB061A0000E7D6 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		53FC334720DB061A0000E7D6 /* CodableExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
-		53FC334820DB061A0000E7D6 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		53FC334920DB061A0000E7D6 /* RestToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestToken.swift; sourceTree = "<group>"; };
-		53FC334A20DB061A0000E7D6 /* RestUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestUtilities.swift; sourceTree = "<group>"; };
-		53FC334B20DB061A0000E7D6 /* RestRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestRequest.swift; sourceTree = "<group>"; };
-		53FC334C20DB061A0000E7D6 /* MultipartFormData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
-		53FC334D20DB061A0000E7D6 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
-		53FC334E20DB061A0000E7D6 /* JSONWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONWrapper.swift; sourceTree = "<group>"; };
-		53FC335A20DB08A20000E7D6 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		53FC335C20DB08B60000E7D6 /* BreakerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakerError.swift; sourceTree = "<group>"; };
-		53FC335D20DB08B60000E7D6 /* Snapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
-		53FC335E20DB08B60000E7D6 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		53FC335F20DB08B60000E7D6 /* CircuitBreaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitBreaker.swift; sourceTree = "<group>"; };
-		53FC336020DB08B60000E7D6 /* Stats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
-		53FC336120DB08B60000E7D6 /* Bulkhead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bulkhead.swift; sourceTree = "<group>"; };
-		53FC336220DB08B60000E7D6 /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
-		53FC336320DB08B60000E7D6 /* Invocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invocation.swift; sourceTree = "<group>"; };
-		53FC336420DB08B60000E7D6 /* Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
-		53FC336520DB08B60000E7D6 /* MonitorCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorCollection.swift; sourceTree = "<group>"; };
 		53FC337320DB0D7D0000E7D6 /* MultiDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiDecodable.swift; sourceTree = "<group>"; };
 		53FC337520DB11470000E7D6 /* InvocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvocationResponse.swift; sourceTree = "<group>"; };
+		53FC337820DB5AD00000E7D6 /* Decoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,12 +81,9 @@
 		5379E90F20DAF5EE00D2BDA2 /* openwhisk-swift-sdk */ = {
 			isa = PBXGroup;
 			children = (
-				53FC335920DB083F0000E7D6 /* LoggerAPI */,
-				53FC335820DB08320000E7D6 /* CircuitBreaker */,
-				53FC334520DB059B0000E7D6 /* SwiftyRequest */,
 				5379E91020DAF5EE00D2BDA2 /* openwhisk_swift_sdk.h */,
 				5379E91120DAF5EE00D2BDA2 /* Info.plist */,
-				5379E92720DAF62200D2BDA2 /* Agent.swift */,
+				53FC337720DB5ABD0000E7D6 /* Controller */,
 				53FC337220DB09250000E7D6 /* ResponseModels */,
 			);
 			path = "openwhisk-swift-sdk";
@@ -139,47 +98,6 @@
 			path = "openwhisk-swift-sdkTests";
 			sourceTree = "<group>";
 		};
-		53FC334520DB059B0000E7D6 /* SwiftyRequest */ = {
-			isa = PBXGroup;
-			children = (
-				53FC334720DB061A0000E7D6 /* CodableExtensions.swift */,
-				53FC334620DB061A0000E7D6 /* HTTPMethod.swift */,
-				53FC334820DB061A0000E7D6 /* JSON.swift */,
-				53FC334E20DB061A0000E7D6 /* JSONWrapper.swift */,
-				53FC334C20DB061A0000E7D6 /* MultipartFormData.swift */,
-				53FC334B20DB061A0000E7D6 /* RestRequest.swift */,
-				53FC334920DB061A0000E7D6 /* RestToken.swift */,
-				53FC334A20DB061A0000E7D6 /* RestUtilities.swift */,
-				53FC334D20DB061A0000E7D6 /* StringExtensions.swift */,
-			);
-			path = SwiftyRequest;
-			sourceTree = "<group>";
-		};
-		53FC335820DB08320000E7D6 /* CircuitBreaker */ = {
-			isa = PBXGroup;
-			children = (
-				53FC335C20DB08B60000E7D6 /* BreakerError.swift */,
-				53FC336120DB08B60000E7D6 /* Bulkhead.swift */,
-				53FC335F20DB08B60000E7D6 /* CircuitBreaker.swift */,
-				53FC336220DB08B60000E7D6 /* Collection.swift */,
-				53FC336320DB08B60000E7D6 /* Invocation.swift */,
-				53FC336420DB08B60000E7D6 /* Monitor.swift */,
-				53FC336520DB08B60000E7D6 /* MonitorCollection.swift */,
-				53FC335D20DB08B60000E7D6 /* Snapshot.swift */,
-				53FC336020DB08B60000E7D6 /* Stats.swift */,
-				53FC335E20DB08B60000E7D6 /* Utils.swift */,
-			);
-			path = CircuitBreaker;
-			sourceTree = "<group>";
-		};
-		53FC335920DB083F0000E7D6 /* LoggerAPI */ = {
-			isa = PBXGroup;
-			children = (
-				53FC335A20DB08A20000E7D6 /* Logger.swift */,
-			);
-			path = LoggerAPI;
-			sourceTree = "<group>";
-		};
 		53FC337220DB09250000E7D6 /* ResponseModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +106,15 @@
 				53FC337520DB11470000E7D6 /* InvocationResponse.swift */,
 			);
 			path = ResponseModels;
+			sourceTree = "<group>";
+		};
+		53FC337720DB5ABD0000E7D6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5379E92720DAF62200D2BDA2 /* Agent.swift */,
+				53FC337820DB5AD00000E7D6 /* Decoders.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,30 +226,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53FC335020DB061A0000E7D6 /* CodableExtensions.swift in Sources */,
-				53FC336D20DB08B60000E7D6 /* Invocation.swift in Sources */,
-				53FC336B20DB08B60000E7D6 /* Bulkhead.swift in Sources */,
-				53FC336A20DB08B60000E7D6 /* Stats.swift in Sources */,
 				53FC337620DB11470000E7D6 /* InvocationResponse.swift in Sources */,
-				53FC335120DB061A0000E7D6 /* JSON.swift in Sources */,
-				53FC335620DB061A0000E7D6 /* StringExtensions.swift in Sources */,
 				5379E92820DAF62200D2BDA2 /* Agent.swift in Sources */,
-				53FC335720DB061A0000E7D6 /* JSONWrapper.swift in Sources */,
-				53FC336F20DB08B60000E7D6 /* MonitorCollection.swift in Sources */,
-				53FC336C20DB08B60000E7D6 /* Collection.swift in Sources */,
-				53FC336820DB08B60000E7D6 /* Utils.swift in Sources */,
-				53FC335420DB061A0000E7D6 /* RestRequest.swift in Sources */,
-				53FC336620DB08B60000E7D6 /* BreakerError.swift in Sources */,
+				53FC337920DB5AD00000E7D6 /* Decoders.swift in Sources */,
 				53FC334420DB033F0000E7D6 /* Action.swift in Sources */,
-				53FC335B20DB08A20000E7D6 /* Logger.swift in Sources */,
-				53FC334F20DB061A0000E7D6 /* HTTPMethod.swift in Sources */,
-				53FC335520DB061A0000E7D6 /* MultipartFormData.swift in Sources */,
 				53FC337420DB0D7D0000E7D6 /* MultiDecodable.swift in Sources */,
-				53FC336E20DB08B60000E7D6 /* Monitor.swift in Sources */,
-				53FC335320DB061A0000E7D6 /* RestUtilities.swift in Sources */,
-				53FC335220DB061A0000E7D6 /* RestToken.swift in Sources */,
-				53FC336920DB08B60000E7D6 /* CircuitBreaker.swift in Sources */,
-				53FC336720DB08B60000E7D6 /* Snapshot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

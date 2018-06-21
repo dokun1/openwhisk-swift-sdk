@@ -18,17 +18,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let agent = Agent()
-        agent.apiKey = "enter api key here"
-        agent.secret = "enter secret here"
-        agent.organization = "enter organization here"
-        agent.space = "enter space here"
-        agent.host = "enter host here"
+        agent.apiKey = "2fead91c-2ca8-481f-bd3e-4468821b4d5f"
+        agent.secret = "YgP0ywUcAlhpJKD4UA9Uw1NPSmMPZZNPmtHz6U75yiSzS94MBnOLkJeYUUF8OmfO"
+        agent.organization = "david.okun"
+        agent.space = "dev"
+        agent.host = "https://openwhisk.ng.bluemix.net"
         agent.getActions { (actions: [Action]?, error: AgentError?) in
             guard let actions = actions else {
                 return
             }
             for action in actions where action.name == "fetchForeignBitcoin" {
-                agent.invoke(action: action, input: Currency(code: "USD"), blocking: true, resultOnly: false, completion: { response, error in
+                agent.invoke(action: action, input: Currency(code: "USD"), completion: { response, error in
                     print(response.debugDescription)
                 })
             }

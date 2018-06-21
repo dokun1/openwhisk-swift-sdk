@@ -9,15 +9,16 @@
 import Foundation
 
 public struct InvocationResponse: Codable {
-    var activationId: String?
-    var duration: Double?
-    var name: String?
-    var subject: String?
-    var publish: Bool?
-    var annotations: [Annotation]?
-    var version: String?
-    var end: Date?
-    var start: Date?
-    var namespace: String?
+    public var activationId: String?
+    public var duration: Double?
+    public var name: String?
+    public var subject: String?
+    public var publish: Bool?
+    public var annotations: [Annotation]?
+    public var version: String?
+    public var response: InvocationResult?
+    public var end: Date?
+    public var start: Date?
+    public var namespace: String?
     // need to figure out how to handle responses, as those are *truly* dynamic
 }

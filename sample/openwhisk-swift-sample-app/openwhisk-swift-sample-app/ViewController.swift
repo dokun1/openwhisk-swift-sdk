@@ -9,26 +9,38 @@
 import UIKit
 import openwhisk_swift_sdk
 
+struct Currency: Codable {
+    var code: String
+}
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let agent = Agent()
-        agent.apiKey = "enter openwhisk API key here"
-        agent.secret = "enter openwhisk secret here"
-        agent.organization = "enter ibm cloud organization here"
-        agent.space = "enter ibm cloud space here"
+        agent.apiKey = "enter api key here"
+        agent.secret = "enter secret here"
+        agent.organization = "enter organization here"
+        agent.space = "enter space here"
+        agent.host = "enter host here"
         agent.getActions { (actions: [Action]?, error: AgentError?) in
-            guard let action = actions?.first else {
+            guard let actions = actions else {
                 return
             }
-            agent.invoke(action: action, blocking: true, completion: { response, error in
-                print(response.debugDescription)
-            })
-            agent.invoke(action: action, completion: { response, error in
-                print(response.debugDescription)
-            })
+            for action in actions where action.name == "fetchForeignBitcoin" {
+                agent.invoke(action: action, input: Currency(code: "USD"), blocking: true, resultOnly: false, completion: { response, error in
+                    print(response.debugDescription)
+                })
+            }
         }
+        // Do any additional setup after loading the view, typically from a nib.
     }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+
 }
+

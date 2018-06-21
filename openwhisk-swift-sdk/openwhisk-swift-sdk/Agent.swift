@@ -13,6 +13,7 @@ public enum AgentError: Swift.Error {
     case noSecret
     case noOrganization
     case noSpace
+    case noHost
     case invalidCredentials
     case unknown
 }
@@ -26,6 +27,7 @@ public class Agent {
     public var secret: String?
     public var organization: String?
     public var space: String?
+    public var host: String?
     
     private func checkVars() throws {
         guard let _ = apiKey else {
@@ -40,12 +42,15 @@ public class Agent {
         guard let _ = space else {
             throw AgentError.noSpace
         }
+        guard let _ = host else {
+            throw AgentError.noHost
+        }
     }
     
     public func getActions(completion: @escaping (_ actions: [Action]?, _ error: AgentError?) -> Void) {
         do {
             try checkVars()
-            let request = RestRequest(method: .get, url: "https://openwhisk.ng.bluemix.net/api/v1/namespaces/\(organization!)_\(space!)/actions", containsSelfSignedCert: false)
+            let request = RestRequest(method: .get, url: "\(host!)/api/v1/namespaces/\(organization!)_\(space!)/actions", containsSelfSignedCert: false)
             request.credentials = Credentials.basicAuthentication(username: apiKey!, password: secret!)
             request.responseObject { (response: RestResponse<[Action]>) in
                 switch response.result {
@@ -67,11 +72,14 @@ public class Agent {
         }
     }
     
-    public func invoke(action: Action, blocking: Bool = false, resultOnly: Bool = false, completion: @escaping (_ response: InvocationResponse?, _ error: AgentError?) -> Void ) {
+    public func invoke<T: Codable>(action: Action, input: T?, blocking: Bool = false, resultOnly: Bool = false, completion: @escaping (_ response: InvocationResponse?, _ error: AgentError?) -> Void ) {
         do {
             try checkVars()
-            let request = RestRequest(method: .post, url: "https://openwhisk.ng.bluemix.net/api/v1/namespaces/\(action.namespace)/actions/\(action.name)?blocking=\(blocking)&result=\(resultOnly)", containsSelfSignedCert: false)
+            let request = RestRequest(method: .post, url: "\(host!)/api/v1/namespaces/\(action.namespace)/actions/\(action.name)?blocking=\(blocking)&result=\(resultOnly)", containsSelfSignedCert: false)
             request.credentials = Credentials.basicAuthentication(username: apiKey!, password: secret!)
+            if let input = input {
+                request.messageBody = try? JSONEncoder().encode(input)
+            }
             request.responseObject { (response: RestResponse<InvocationResponse>) in
                 switch response.result {
                 case .success(let invocationResponse):

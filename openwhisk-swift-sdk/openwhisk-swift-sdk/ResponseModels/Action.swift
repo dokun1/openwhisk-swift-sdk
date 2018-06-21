@@ -9,11 +9,11 @@
 import Foundation
 
 public struct Action: Codable {    
-    var name: String
-    var namespace: String
-    var version: String
-    var limits: Limits
-    var publish: Bool
-    var updated: Date
-    var annotations: [Annotation]
+    public var name: String
+    public var namespace: String
+    public var version: String
+    public var limits: Limits
+    public var publish: Bool
+    public var updated: Date
+    public var annotations: [Annotation]
 }

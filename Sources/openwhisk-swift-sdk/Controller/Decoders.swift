@@ -20,11 +20,21 @@ class Decoders {
         }
     }
     
-    internal static func decodeInvocationResponse(_ data: Data) throws -> InvocationResponse {
+    internal static func decodeInvocationResponse<O: Codable>(_ data: Data, responseType: O.Type?) throws -> InvocationResponse<O> {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .millisecondsSince1970
         do {
-            let response = try decoder.decode(InvocationResponse.self, from: data)
+            let response = try decoder.decode(InvocationResponse<O>.self, from: data)
+            return response
+        } catch let error {
+            throw error
+        }
+    }
+    
+    internal static func decodeActionDetailResponse(_ data: Data) throws -> ActionDetail {
+        let decoder = JSONDecoder()
+        do {
+            let response = try decoder.decode(ActionDetail.self, from: data)
             return response
         } catch let error {
             throw error

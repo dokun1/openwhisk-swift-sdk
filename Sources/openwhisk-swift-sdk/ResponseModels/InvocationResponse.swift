@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct InvocationResponse: Codable {
+public struct InvocationResponse<O: Codable>: Codable {
     public var activationId: String?
     public var duration: Double?
     public var name: String?
@@ -16,9 +16,8 @@ public struct InvocationResponse: Codable {
     public var publish: Bool?
     public var annotations: [Annotation]?
     public var version: String?
-    public var response: InvocationResult?
+    public var response: InvocationResult<O>?
     public var end: Date?
     public var start: Date?
     public var namespace: String?
-    // need to figure out how to handle responses, as those are *truly* dynamic
 }

@@ -19,9 +19,15 @@ public struct Annotation: Codable {
     public var value: MultiDecodable
 }
 
-public struct InvocationResult: Codable {
+public struct ExecNode: Codable {
+    public var kind: String?
+    public var code: String?
+}
+
+public struct InvocationResult<O: Codable>: Codable {
     public var success: Bool
     public var status: String
+    public var result: O
 }
 
 public enum MultiDecodable: Codable {

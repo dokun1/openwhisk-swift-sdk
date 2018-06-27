@@ -12,11 +12,22 @@ import SwiftyRequest
 public enum AgentError: Swift.Error {
     case noApiKey
     case noSecret
-    case noOrganization
-    case noSpace
+    case noNamespace
     case noHost
     case invalidCredentials
+    case noResponseTypeProvided
     case unknown
+    
+    fileprivate static func process(_ error: Error) -> AgentError {
+        guard let restError = error as? RestError else {
+            return AgentError.unknown
+        }
+        if restError.code == 403 {
+            return AgentError.invalidCredentials
+        } else {
+            return AgentError.unknown
+        }
+    }
 }
 
 public class Agent {
@@ -26,8 +37,7 @@ public class Agent {
     
     public var apiKey: String?
     public var secret: String?
-    public var organization: String?
-    public var space: String?
+    public var namespace: String?
     public var host: String?
     
     private func checkVars() throws {
@@ -37,11 +47,8 @@ public class Agent {
         guard let _ = secret else {
             throw AgentError.noSecret
         }
-        guard let _ = organization else {
-            throw AgentError.noOrganization
-        }
-        guard let _ = space else {
-            throw AgentError.noSpace
+        guard let _ = namespace else {
+            throw AgentError.noNamespace
         }
         guard let _ = host else {
             throw AgentError.noHost
@@ -51,7 +58,7 @@ public class Agent {
     public func getActions(completion: @escaping (_ actions: [Action]?, _ error: AgentError?) -> Void) {
         do {
             try checkVars()
-            let request = RestRequest(method: .get, url: "\(host!)/api/v1/namespaces/\(organization!)_\(space!)/actions", containsSelfSignedCert: false)
+            let request = RestRequest(method: .get, url: "\(host!)/api/v1/namespaces/\(namespace!)/actions", containsSelfSignedCert: false)
             request.credentials = Credentials.basicAuthentication(username: apiKey!, password: secret!)
             request.responseData { (response: RestResponse<Data>) in
                 switch response.result {
@@ -63,14 +70,7 @@ public class Agent {
                         return completion(nil, AgentError.unknown)
                     }
                 case .failure(let error):
-                    guard let restError = error as? RestError else {
-                        return completion(nil, AgentError.unknown)
-                    }
-                    if restError.code == 403 {
-                        return completion(nil, AgentError.invalidCredentials)
-                    } else {
-                        return completion(nil, AgentError.unknown)
-                    }
+                    return completion(nil, AgentError.process(error))
                 }
             }
         } catch let error {
@@ -78,32 +78,52 @@ public class Agent {
         }
     }
     
-    public func invoke<T: Codable>(action: Action, input: T?, blocking: Bool = false, resultOnly: Bool = false, completion: @escaping (_ response: InvocationResponse?, _ error: AgentError?) -> Void ) {
+    public func getActionDetail(_ action: Action, completion: @escaping (_ response: ActionDetail?, _ error: AgentError?) -> Void) {
         do {
             try checkVars()
+            //https://openwhisk.ng.bluemix.net/api/v1/namespaces/_/actions/fetchForeignBitcoin
+            let request = RestRequest(method: .get, url: "\(host!)/api/v1/namespaces/\(namespace!)/actions/\(action.name)", containsSelfSignedCert: false)
+            request.credentials = Credentials.basicAuthentication(username: apiKey!, password: secret!)
+            request.responseData { (response: RestResponse<Data>) in
+                switch response.result {
+                case .success(let responseData):
+                    do {
+                        let modeledResponse = try Decoders.decodeActionDetailResponse(responseData)
+                        return completion(modeledResponse, nil)
+                    } catch {
+                        return completion(nil, AgentError.unknown)
+                    }
+                case .failure(let error):
+                    return completion(nil, AgentError.process(error))
+                }
+            }
+        } catch let error {
+            completion(nil, error as? AgentError)
+        }
+    }
+    
+    public func invoke<I: Codable, O: Codable>(action: Action, input: I?, responseType: O.Type?, blocking: Bool = false, resultOnly: Bool = false, completion: @escaping (_ response: InvocationResponse<O>?, _ error: AgentError?) -> Void ) {
+        do {
+            try checkVars()
+            if blocking && responseType == nil {
+                return completion(nil, AgentError.noResponseTypeProvided)
+            }
             let request = RestRequest(method: .post, url: "\(host!)/api/v1/namespaces/\(action.namespace)/actions/\(action.name)?blocking=\(blocking)&result=\(resultOnly)", containsSelfSignedCert: false)
             request.credentials = Credentials.basicAuthentication(username: apiKey!, password: secret!)
             if let input = input {
-                request.messageBody = try? JSONEncoder().encode(input)
+                request.messageBody = try JSONEncoder().encode(input)
             }
             request.responseData { (response: RestResponse<Data>) in
                 switch response.result {
                 case .success(let responseData):
                     do {
-                        let modeledResponse = try Decoders.decodeInvocationResponse(responseData)
+                        let modeledResponse = try Decoders.decodeInvocationResponse(responseData, responseType: responseType.self)
                         completion(modeledResponse, nil)
                     } catch {
                         return completion(nil, AgentError.unknown)
                     }
                 case .failure(let error):
-                    guard let restError = error as? RestError else {
-                        return completion(nil, AgentError.unknown)
-                    }
-                    if restError.code == 403 {
-                        return completion(nil, AgentError.invalidCredentials)
-                    } else {
-                        return completion(nil, AgentError.unknown)
-                    }
+                    return completion(nil, AgentError.process(error))
                 }
             }
         }  catch let error {
@@ -111,3 +131,4 @@ public class Agent {
         }
     }
 }
+

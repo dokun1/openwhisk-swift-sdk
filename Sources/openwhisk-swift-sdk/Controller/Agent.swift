@@ -81,7 +81,6 @@ public class Agent {
     public func getActionDetail(_ action: Action, completion: @escaping (_ response: ActionDetail?, _ error: AgentError?) -> Void) {
         do {
             try checkVars()
-            //https://openwhisk.ng.bluemix.net/api/v1/namespaces/_/actions/fetchForeignBitcoin
             let request = RestRequest(method: .get, url: "\(host!)/api/v1/namespaces/\(namespace!)/actions/\(action.name)", containsSelfSignedCert: false)
             request.credentials = Credentials.basicAuthentication(username: apiKey!, password: secret!)
             request.responseData { (response: RestResponse<Data>) in

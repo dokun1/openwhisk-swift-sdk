@@ -22,8 +22,8 @@ final class openwhisk_swift_sdkTests: XCTestCase {
     
     override func setUp() {
         let newAgent = Agent()
-        newAgent.apiKey = "enter api key here"
-        newAgent.secret = "enter secret here"
+        newAgent.apiKey = "enter API key here"
+        newAgent.secret = "enter API secret here"
         newAgent.namespace = "enter namespace here"
         newAgent.host = "enter host here"
         agent = newAgent
@@ -40,6 +40,7 @@ final class openwhisk_swift_sdkTests: XCTestCase {
             XCTAssertNil(error, "Should not have an error on successful request for all actions")
             guard let firstAction = actions?.first else {
                 XCTFail("Could not get first action from returned collection")
+                actionExpectation.fulfill()
                 return
             }
             agent.getActionDetail(firstAction) { details, error in

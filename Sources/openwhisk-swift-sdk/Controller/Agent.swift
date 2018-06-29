@@ -108,7 +108,7 @@ public class Agent {
             if blocking && responseType == nil {
                 return completion(nil, AgentError.noResponseTypeProvided)
             }
-            let request = RestRequest(method: .post, url: "\(host!)/api/v1/namespaces/\(action.namespace)/actions/\(action.name)?blocking=\(blocking)&result=\(resultOnly)", containsSelfSignedCert: false)
+            let request = RestRequest(method: .post, url: "\(host!)/api/v1/namespaces/\(action.namespace)/actions/\(action.name)", containsSelfSignedCert: false)
             request.credentials = Credentials.basicAuthentication(username: apiKey!, password: secret!)
             if let input = input {
                 request.messageBody = try JSONEncoder().encode(input)

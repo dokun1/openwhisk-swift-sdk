@@ -27,7 +27,11 @@ public struct ExecNode: Codable {
 public struct InvocationResult<O: Codable>: Codable {
     public var success: Bool?
     public var status: String?
-    public var result: O?
+    public var result: InvocationResultOutput<O>?
+}
+
+public struct InvocationResultOutput<O: Codable>: Codable {
+    public var output: O?
 }
 
 public enum MultiDecodable: Codable {

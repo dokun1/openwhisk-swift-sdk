@@ -9,21 +9,18 @@ final class openwhisk_swift_sdkTests: XCTestCase {
     }
     
     struct CurrencyResponse: Codable {
-        var output: CurrencyResponseOutput
-        struct CurrencyResponseOutput: Codable {
-            var currency: CurrencyResponseCurrency
-            struct CurrencyResponseCurrency: Codable {
-                var currencyCode: String
-                var name: String
-                var value: Double
-            }
+        var currency: CurrencyResponseCurrency
+        struct CurrencyResponseCurrency: Codable {
+            var currencyCode: String
+            var name: String
+            var value: Double
         }
     }
     
     override func setUp() {
         let newAgent = Agent()
-        newAgent.apiKey = "enter API key here"
-        newAgent.secret = "enter API secret here"
+        newAgent.apiKey = "enter api key here"
+        newAgent.secret = "enter secret here"
         newAgent.namespace = "enter namespace here"
         newAgent.host = "enter host here"
         agent = newAgent
@@ -131,7 +128,7 @@ final class openwhisk_swift_sdkTests: XCTestCase {
                 agent.invoke(action: action, input: Currency(code: "USD"), responseType: CurrencyResponse.self, blocking: true, resultOnly: true, completion: { response, error in
                     XCTAssertNotNil(response, "Should have received a response")
                     XCTAssertNil(error, "Should not have received an error")
-                    XCTAssertNotNil(response?.response, "The actual response object should not be nil")
+                    XCTAssertNotNil(response?.output, "The actual response output should not be nil")
                     XCTAssertNil(response?.activationId, "When specifying only the result, all other fields should be nil")
                     
                     actionInvokeExpectation.fulfill()

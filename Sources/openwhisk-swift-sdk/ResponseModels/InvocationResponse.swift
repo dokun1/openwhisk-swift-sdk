@@ -17,6 +17,7 @@ public struct InvocationResponse<O: Codable>: Codable {
     public var annotations: [Annotation]?
     public var version: String?
     public var response: InvocationResult<O>?
+    public var output: O?
     public var end: Date?
     public var start: Date?
     public var namespace: String?

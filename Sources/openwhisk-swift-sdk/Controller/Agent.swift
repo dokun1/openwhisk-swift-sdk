@@ -60,6 +60,7 @@ public class Agent {
             try checkVars()
             let request = RestRequest(method: .get, url: "\(host!)/api/v1/namespaces/\(namespace!)/actions", containsSelfSignedCert: false)
             request.credentials = Credentials.basicAuthentication(username: apiKey!, password: secret!)
+
             request.responseData { (response: RestResponse<Data>) in
                 switch response.result {
                 case .success(let responseData):
@@ -112,7 +113,7 @@ public class Agent {
             if let input = input {
                 request.messageBody = try JSONEncoder().encode(input)
             }
-            request.responseData { (response: RestResponse<Data>) in
+            request.responseData(templateParams: nil, queryItems: [URLQueryItem(name: "blocking", value: String(blocking)), URLQueryItem(name: "result", value: String(resultOnly))]) { (response: RestResponse<Data>) in
                 switch response.result {
                 case .success(let responseData):
                     do {

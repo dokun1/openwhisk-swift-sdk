@@ -19,10 +19,13 @@ final class openwhisk_swift_sdkTests: XCTestCase {
     
     override func setUp() {
         let newAgent = Agent()
-        newAgent.apiKey = "enter api key here"
-        newAgent.secret = "enter secret here"
-        newAgent.namespace = "enter namespace here"
-        newAgent.host = "enter host here"
+        guard let credentials = OWENV.fetchCredentials() else {
+            return
+        }
+        newAgent.apiKey = credentials.apiKey
+        newAgent.secret = credentials.secret
+        newAgent.namespace = credentials.namespace
+        newAgent.host = credentials.host
         agent = newAgent
     }
     
